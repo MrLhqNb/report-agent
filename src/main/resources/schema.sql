@@ -40,3 +40,16 @@ CREATE TABLE IF NOT EXISTS api_key_config (
     is_active BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS scheduled_task (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    db_config_id BIGINT NOT NULL,
+    question VARCHAR(1000) NOT NULL,
+    cron_expression VARCHAR(100) NOT NULL,
+    email_to VARCHAR(500),
+    enabled BOOLEAN DEFAULT TRUE,
+    last_run_at TIMESTAMP NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
